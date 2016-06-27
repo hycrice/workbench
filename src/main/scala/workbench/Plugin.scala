@@ -28,7 +28,7 @@ object Plugin extends sbt.Plugin {
   lazy val replHistory = collection.mutable.Buffer.empty[String]
 
   val workbenchSettings = Seq(
-    localUrl := ("black-trucker-193717.nitrousapp.com", 3000),
+    localUrl := ("0.0.0.0", 3000),
     updatedJS := {
       var files: List[String] = Nil
       ((crossTarget in Compile).value * "*.js").get.foreach {
