@@ -28,7 +28,7 @@ object Plugin extends sbt.Plugin {
   lazy val replHistory = collection.mutable.Buffer.empty[String]
 
   val workbenchSettings = Seq(
-    localUrl := ("localhost", 3000),
+    localUrl := ("black-trucker-193717.nitrousapp.com", 3000),
     updatedJS := {
       var files: List[String] = Nil
       ((crossTarget in Compile).value * "*.js").get.foreach {
@@ -87,7 +87,7 @@ object Plugin extends sbt.Plugin {
         }{
 
           streams.value.log.info("workbench: Splicing " + path)
-          val prefix = "http://localhost:3000/"
+          val prefix = "http://black-trucker-193717.nitrousapp.com:3000/"
           val s = munge(sbt.IO.read(new sbt.File(path.drop(prefix.length))))
 
           sbt.IO.write(new sbt.File(path.drop(prefix.length) + ".js"), s.getBytes)
@@ -161,7 +161,7 @@ object Plugin extends sbt.Plugin {
         )
         Def.task {
           server.value.Wire[Api].run(
-            s"http://localhost:3000/$outPath",
+            s"http://black-trucker-193717.nitrousapp.com:3000/$outPath",
             None
           ).call()
           ()
